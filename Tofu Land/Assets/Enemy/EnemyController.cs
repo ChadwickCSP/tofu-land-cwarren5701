@@ -6,6 +6,9 @@ public class EnemyController : MonoBehaviour
 {
     public bool movingLeft;
 
+    //The amount of force to apply to Tofu on contact
+    public float strength;
+
     // Update is called once per frame
     void Update()
     {
@@ -26,6 +29,7 @@ public class EnemyController : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
+        // print message when collison happens 
         print(collision.gameObject);
         // checking to see if the object that we collide into has an edge checker 
 
@@ -35,21 +39,22 @@ public class EnemyController : MonoBehaviour
         {
             // so if it is a checker on this object, then make it so the enemy is not travelling left(if its not going left its going right) so basically making the enemy turn around and walk the other way
             // the "!" means the opposite of the following value
-            if (checker.isLeftBound)
-            {
-                this.movingLeft = !checker.isLeftBound;
-            }
-           
-
-            PlayerController playerController = collision.gameObject.GetComponent<PlayerController>();
             
-            if (playerController != null)
-            {
-                //destroy this object
-                UnityEngine.Object.Destroy(this.gameObject);
-            }
+            this.movingLeft = !checker.isLeftBound;
+            GetComponent<SpriteRenderer>().flipX = false;
 
         }
+        PlayerController playerController = collision.gameObject.GetComponent<PlayerController>();
 
+        // if playercontroller is attached to this object, then...
+        if (playerController != null)
+
+           {
+            //destroy this object
+            UnityEngine.Object.Destroy(this.gameObject);
+
+            // refering to the object that playerController is assigned to; and when the collison occurs, move the Tofu character(object with playercontroller) up in the air with gravity applied times 600
+            playerController.gameObject.GetComponent<Rigidbody2D>().AddForce(Vector2.up * 600);
+           }
     }
 }

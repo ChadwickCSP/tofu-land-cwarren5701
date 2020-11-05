@@ -42,4 +42,29 @@ public class PlayerController : MonoBehaviour
             GetComponent<Animator>().SetBool("isMoving", false);
         }
     }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        print(collision.gameObject);
+
+        EnemyController enemy = collision.gameObject.GetComponent<EnemyController>();
+        if(enemy != null)
+        {
+            // if the enemy is facing left then...
+            if(GetComponent<SpriteRenderer>().flipX == true)
+            {
+                // have the tofu kickback on contact to the left based on the enemy strength 
+            this.gameObject.GetComponent<Rigidbody2D>().AddForce(Vector2.left * enemy.strength);
+            }
+            // if the enemy is not facing left(so facing right
+            else
+            {
+                //have the tofu kickback on contact to the right based on the enemy strength
+                this.gameObject.GetComponent<Rigidbody2D>().AddForce(Vector2.right * enemy.strength);
+
+            }
+        }
+    }
+
+
 }
