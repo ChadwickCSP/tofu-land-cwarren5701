@@ -5,5 +5,5 @@ using UnityEngine;
 public class EdgeChecker : MonoBehaviour
 {
     // This variable determines which side of a boundary we are 
-    public bool isLeftBound;
+    public bool isLeftBound; 
 }
