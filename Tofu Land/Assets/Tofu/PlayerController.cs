@@ -51,16 +51,16 @@ public class PlayerController : MonoBehaviour
         if(enemy != null)
         {
             // if the enemy is facing left then...
-            if(GetComponent<SpriteRenderer>().flipX == true)
+            if(GetComponent<SpriteRenderer>().flipX == false)
             {
                 // have the tofu kickback on contact to the left based on the enemy strength 
             this.gameObject.GetComponent<Rigidbody2D>().AddForce(Vector2.left * enemy.strength);
             }
-            // if the enemy is not facing left(so facing right
+            // if the enemy is not facing left(so facing right)
             else
             {
                 //have the tofu kickback on contact to the right based on the enemy strength
-                this.gameObject.GetComponent<Rigidbody2D>().AddForce(Vector2.right * enemy.strength);
+            this.gameObject.GetComponent<Rigidbody2D>().AddForce(Vector2.right * enemy.strength);
 
             }
         }
