@@ -49,9 +49,14 @@ public class PlayerController : MonoBehaviour
 
         EnemyController enemy = collision.gameObject.GetComponent<EnemyController>();
         if(enemy != null)
+
         {
-            // if the enemy is facing left then...
-            if(GetComponent<SpriteRenderer>().flipX == false)
+            float tofuX = this.transform.position.x;
+            float enemyX = enemy.transform.position.x;
+            bool isLeftofEnemy = tofuX < enemyX;
+
+            // if the enemy is left of the enemy then...
+            if(isLeftofEnemy)
             {
                 // have the tofu kickback on contact to the left based on the enemy strength 
             this.gameObject.GetComponent<Rigidbody2D>().AddForce(Vector2.left * enemy.strength);
