@@ -8,6 +8,7 @@ public class EnemyController : MonoBehaviour
 
     //The amount of force to apply to Tofu on contact
     public float strength;
+    private bool isOnSamePlatfrom;
 
     // Update is called once per frame
     void Update()
@@ -18,7 +19,7 @@ public class EnemyController : MonoBehaviour
         {
             speed = -1;
         }
-        else 
+        else
         {
             speed = 1;
             GetComponent<SpriteRenderer>().flipX = true;
@@ -39,7 +40,7 @@ public class EnemyController : MonoBehaviour
         {
             // so if it is a checker on this object, then make it so the enemy is not travelling left(if its not going left its going right) so basically making the enemy turn around and walk the other way
             // the "!" means the opposite of the following value
-            
+
             this.movingLeft = !checker.isLeftBound;
             GetComponent<SpriteRenderer>().flipX = false;
 
@@ -49,13 +50,13 @@ public class EnemyController : MonoBehaviour
         // if playercontroller is attached to this object, then...
         if (playerController != null)
 
-           {
+        {
             //destroy this object
             UnityEngine.Object.Destroy(this.gameObject);
 
             // refering to the object that playerController is assigned to; and when the collison occurs, move the Tofu character(object with playercontroller) up in the air with gravity applied times 600
             playerController.gameObject.GetComponent<Rigidbody2D>().AddForce(Vector2.up * 600);
-           }
+        }
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
@@ -66,5 +67,25 @@ public class EnemyController : MonoBehaviour
         {
             this.gameObject.GetComponent<Rigidbody2D>().AddForce(Vector2.up * ground.strength);
         }
+        PlayerController tofu = //no sure what to write here because its not a collision like the one above 
+        float tofuX = tofu.transform.position.x;
+        float enemyX = this.transform.position.x;
+        float tofuY = tofu.transform.position.Y;
+        float enemyY = this.transform.position.Y;
+        bool isLeftofTofu = tofuX > enemyX;
+        bool isOnSameplatform = tofuY = enemyY;
+
+        if (isOnSamePlatfrom)
+        {
+            if (isLeftofTofu)
+            {
+                GetComponent<SpriteRenderer>().flipX = true;
+            }
+            else
+            {
+                GetComponent<SpriteRenderer>().flipX = true;
+            }
+        }
     }
+
 }

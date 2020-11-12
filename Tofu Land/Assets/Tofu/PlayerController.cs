@@ -20,7 +20,7 @@ public class PlayerController : MonoBehaviour
         bool isJumping = Input.GetKeyDown(KeyCode.Space);
 
         // Add code to make it so that when you press space the Tofu jumps
-        if(isJumping)
+        if (isJumping)
         {
             GetComponent<Rigidbody2D>().AddForce(Vector2.up * jumpPower);
         }
@@ -34,7 +34,7 @@ public class PlayerController : MonoBehaviour
             GetComponent<SpriteRenderer>().flipX = false;
         }
         // if the player presses the right or left arrow keys(or a or d) the object will move accordingly
-        if(horizontalInput !=0)
+        if (horizontalInput != 0)
         {
             GetComponent<Animator>().SetBool("isMoving", true);
         } else
@@ -48,7 +48,7 @@ public class PlayerController : MonoBehaviour
         print(collision.gameObject);
 
         EnemyController enemy = collision.gameObject.GetComponent<EnemyController>();
-        if(enemy != null)
+        if (enemy != null)
 
         {
             float tofuX = this.transform.position.x;
@@ -56,20 +56,21 @@ public class PlayerController : MonoBehaviour
             bool isLeftofEnemy = tofuX < enemyX;
 
             // if the enemy is left of the enemy then...
-            if(isLeftofEnemy)
+            if (isLeftofEnemy)
             {
                 // have the tofu kickback on contact to the left based on the enemy strength 
-            this.gameObject.GetComponent<Rigidbody2D>().AddForce(Vector2.left * enemy.strength);
+                this.gameObject.GetComponent<Rigidbody2D>().AddForce(Vector2.left * enemy.strength);
+
             }
             // if the enemy is not facing left(so facing right)
             else
             {
                 //have the tofu kickback on contact to the right based on the enemy strength
-            this.gameObject.GetComponent<Rigidbody2D>().AddForce(Vector2.right * enemy.strength);
+                this.gameObject.GetComponent<Rigidbody2D>().AddForce(Vector2.right * enemy.strength);
 
             }
         }
     }
-
+    
 
 }
