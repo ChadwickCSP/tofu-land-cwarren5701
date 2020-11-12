@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemyController : MonoBehaviour
+public class DestroyTofuEnemyController : MonoBehaviour
 {
     public bool movingLeft;
 
@@ -25,8 +25,6 @@ public class EnemyController : MonoBehaviour
         }
 
         transform.Translate(Vector2.right * speed * Time.deltaTime);
-
-
         
     }
 
@@ -64,13 +62,38 @@ public class EnemyController : MonoBehaviour
     private void OnCollisionEnter2D(Collision2D collision)
     {
         print(collision.gameObject);
-        BouncyGroundScript ground = collision.gameObject.GetComponent<BouncyGroundScript>();
+        NewBehaviourScript ground = collision.gameObject.GetComponent<NewBehaviourScript>();
         if (ground != null)
         {
             this.gameObject.GetComponent<Rigidbody2D>().AddForce(Vector2.up * ground.strength);
+            
         }
-        
-    
-    }
+        PlayerController playerController = collision.gameObject.GetComponent<PlayerController>();
+        if (playerController != null)
 
-}
+        {
+                float tofuX = playerController.transform.position.x;
+                float enemyX = this.transform.position.x;
+                bool isLeftofEnemy = tofuX < enemyX;
+
+                // if the enemy is left of the enemy then...
+                if (isLeftofEnemy)
+                {
+                    // have the tofu kickback on contact to the left based on the enemy strength 
+                    UnityEngine.Object.Destroy(playerController.gameObject);
+
+
+
+                }
+                // if the enemy is not facing left(so facing right)
+                else
+                {
+                //have the tofu kickback on contact to the right based on the enemy strength
+                UnityEngine.Object.Destroy(playerController.gameObject);
+
+
+            }
+
+            }
+        }
+    }

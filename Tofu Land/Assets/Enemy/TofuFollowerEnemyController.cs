@@ -2,21 +2,29 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemyController : MonoBehaviour
+public class TofuFollowerEnemyController : MonoBehaviour
 {
     public bool movingLeft;
 
     //The amount of force to apply to Tofu on contact
     public float strength;
 
+    public PlayerController tofu;
+
     // Update is called once per frame
     void Update()
     {
         float speed = 0;
+        float tofuX = tofu.transform.position.x;
+        float enemyX = this.transform.position.x;
+        bool isLeftofTofu = tofuX > enemyX;
 
-        if (movingLeft)
+        if (!isLeftofTofu)
+
         {
             speed = -1;
+            GetComponent<SpriteRenderer>().flipX = false;
+
         }
         else
         {
@@ -26,8 +34,12 @@ public class EnemyController : MonoBehaviour
 
         transform.Translate(Vector2.right * speed * Time.deltaTime);
 
+        //PlayerController tofu = //not sure what to write here because its not a collision like the one above 
+        
 
         
+        
+            
     }
 
     private void OnTriggerEnter2D(Collider2D collision)

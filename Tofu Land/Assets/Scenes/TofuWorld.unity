@@ -857,7 +857,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 18822613}
   m_LocalRotation: {x: -0, y: 0.008726558, z: -0, w: 0.999962}
-  m_LocalPosition: {x: -9.377877, y: -9.391652, z: 0}
+  m_LocalPosition: {x: -9.377877, y: -9.391652, z: -1}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 772269207}
@@ -1487,11 +1487,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 47157598}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: afbd4482aa34945409b21c097a8a3e96, type: 3}
+  m_Script: {fileID: 11500000, guid: 41e9a6bbfd0554cfd8f055528711ce48, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   movingLeft: 0
-  strength: 500
+  strength: 0
 --- !u!61 &47157600
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -2391,11 +2391,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 77943769}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: afbd4482aa34945409b21c097a8a3e96, type: 3}
+  m_Script: {fileID: 11500000, guid: ea28b35ccd4cc4c9f97251e4dc7e38c6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   movingLeft: 0
-  strength: 500
+  strength: 0
+  tofu: {fileID: 1429742200}
 --- !u!61 &77943771
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -2521,7 +2522,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 77943769}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -3.8418665, y: -1.4581854, z: 0}
+  m_LocalPosition: {x: -3.8370743, y: -1.4581857, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1515403573}
@@ -18256,7 +18257,6 @@ GameObject:
   - component: {fileID: 693495087}
   - component: {fileID: 693495091}
   - component: {fileID: 693495090}
-  - component: {fileID: 693495089}
   - component: {fileID: 693495088}
   m_Layer: 0
   m_Name: AllTiles_29 (31)
@@ -18301,19 +18301,6 @@ EdgeCollider2D:
   m_AdjacentEndPoint: {x: 0, y: 0}
   m_UseAdjacentStartPoint: 0
   m_UseAdjacentEndPoint: 0
---- !u!114 &693495089
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 693495086}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4323f90999527433ebe2dd58b3fac7f5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  strength: 100
 --- !u!114 &693495090
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -18323,7 +18310,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 693495086}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5fc32090f289e42ba82216bc08963aea, type: 3}
+  m_Script: {fileID: 11500000, guid: 2733d26de22c042a3b548cabd6a740f6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!212 &693495091
@@ -31421,7 +31408,6 @@ GameObject:
   - component: {fileID: 1206323215}
   - component: {fileID: 1206323219}
   - component: {fileID: 1206323218}
-  - component: {fileID: 1206323217}
   - component: {fileID: 1206323216}
   m_Layer: 0
   m_Name: AllTiles_29 (33)
@@ -31466,19 +31452,6 @@ EdgeCollider2D:
   m_AdjacentEndPoint: {x: 0, y: 0}
   m_UseAdjacentStartPoint: 0
   m_UseAdjacentEndPoint: 0
---- !u!114 &1206323217
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1206323214}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4323f90999527433ebe2dd58b3fac7f5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  strength: 100
 --- !u!114 &1206323218
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -31488,7 +31461,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1206323214}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5fc32090f289e42ba82216bc08963aea, type: 3}
+  m_Script: {fileID: 11500000, guid: 2733d26de22c042a3b548cabd6a740f6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!212 &1206323219
@@ -34748,8 +34721,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1326108751}
   - component: {fileID: 1326108752}
-  - component: {fileID: 1326108753}
-  - component: {fileID: 1326108754}
   - component: {fileID: 1326108755}
   m_Layer: 0
   m_Name: AllTiles_29 (28)
@@ -34823,31 +34794,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &1326108753
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1326108750}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5fc32090f289e42ba82216bc08963aea, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &1326108754
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1326108750}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4323f90999527433ebe2dd58b3fac7f5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  strength: 100
 --- !u!68 &1326108755
 EdgeCollider2D:
   m_ObjectHideFlags: 0
@@ -38933,7 +38879,6 @@ GameObject:
   - component: {fileID: 1482423873}
   - component: {fileID: 1482423877}
   - component: {fileID: 1482423876}
-  - component: {fileID: 1482423875}
   - component: {fileID: 1482423874}
   m_Layer: 0
   m_Name: AllTiles_29 (30)
@@ -38978,19 +38923,6 @@ EdgeCollider2D:
   m_AdjacentEndPoint: {x: 0, y: 0}
   m_UseAdjacentStartPoint: 0
   m_UseAdjacentEndPoint: 0
---- !u!114 &1482423875
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1482423872}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4323f90999527433ebe2dd58b3fac7f5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  strength: 100
 --- !u!114 &1482423876
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -39000,7 +38932,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1482423872}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5fc32090f289e42ba82216bc08963aea, type: 3}
+  m_Script: {fileID: 11500000, guid: 2733d26de22c042a3b548cabd6a740f6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!212 &1482423877
@@ -40087,7 +40019,6 @@ GameObject:
   - component: {fileID: 1543709715}
   - component: {fileID: 1543709719}
   - component: {fileID: 1543709718}
-  - component: {fileID: 1543709717}
   - component: {fileID: 1543709716}
   m_Layer: 0
   m_Name: AllTiles_29 (34)
@@ -40132,19 +40063,6 @@ EdgeCollider2D:
   m_AdjacentEndPoint: {x: 0, y: 0}
   m_UseAdjacentStartPoint: 0
   m_UseAdjacentEndPoint: 0
---- !u!114 &1543709717
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1543709714}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4323f90999527433ebe2dd58b3fac7f5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  strength: 100
 --- !u!114 &1543709718
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -40154,7 +40072,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1543709714}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5fc32090f289e42ba82216bc08963aea, type: 3}
+  m_Script: {fileID: 11500000, guid: 2733d26de22c042a3b548cabd6a740f6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!212 &1543709719
@@ -42537,7 +42455,6 @@ GameObject:
   - component: {fileID: 1628955133}
   - component: {fileID: 1628955137}
   - component: {fileID: 1628955136}
-  - component: {fileID: 1628955135}
   - component: {fileID: 1628955134}
   m_Layer: 0
   m_Name: AllTiles_29 (29)
@@ -42582,19 +42499,6 @@ EdgeCollider2D:
   m_AdjacentEndPoint: {x: 0, y: 0}
   m_UseAdjacentStartPoint: 0
   m_UseAdjacentEndPoint: 0
---- !u!114 &1628955135
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1628955132}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4323f90999527433ebe2dd58b3fac7f5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  strength: 100
 --- !u!114 &1628955136
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -42604,7 +42508,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1628955132}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5fc32090f289e42ba82216bc08963aea, type: 3}
+  m_Script: {fileID: 11500000, guid: 2733d26de22c042a3b548cabd6a740f6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!212 &1628955137
@@ -42865,7 +42769,6 @@ GameObject:
   - component: {fileID: 1639296972}
   - component: {fileID: 1639296976}
   - component: {fileID: 1639296975}
-  - component: {fileID: 1639296974}
   - component: {fileID: 1639296973}
   m_Layer: 0
   m_Name: AllTiles_29 (32)
@@ -42910,19 +42813,6 @@ EdgeCollider2D:
   m_AdjacentEndPoint: {x: 0, y: 0}
   m_UseAdjacentStartPoint: 0
   m_UseAdjacentEndPoint: 0
---- !u!114 &1639296974
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1639296971}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4323f90999527433ebe2dd58b3fac7f5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  strength: 100
 --- !u!114 &1639296975
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -42932,7 +42822,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1639296971}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5fc32090f289e42ba82216bc08963aea, type: 3}
+  m_Script: {fileID: 11500000, guid: 2733d26de22c042a3b548cabd6a740f6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!212 &1639296976

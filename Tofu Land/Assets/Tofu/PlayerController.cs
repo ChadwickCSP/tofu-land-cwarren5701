@@ -60,6 +60,8 @@ public class PlayerController : MonoBehaviour
             {
                 // have the tofu kickback on contact to the left based on the enemy strength 
                 this.gameObject.GetComponent<Rigidbody2D>().AddForce(Vector2.left * enemy.strength);
+             
+
 
             }
             // if the enemy is not facing left(so facing right)
@@ -67,6 +69,7 @@ public class PlayerController : MonoBehaviour
             {
                 //have the tofu kickback on contact to the right based on the enemy strength
                 this.gameObject.GetComponent<Rigidbody2D>().AddForce(Vector2.right * enemy.strength);
+                
 
             }
         }
