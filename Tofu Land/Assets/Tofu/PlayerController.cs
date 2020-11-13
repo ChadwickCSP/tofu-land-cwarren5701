@@ -8,6 +8,7 @@ public class PlayerController : MonoBehaviour
     public float speed;
     // Determines how high the Tofu jumps
     public float jumpPower;
+    public static bool IsInputEnabled = true;
 
     // Update is called once per frame
     void Update()
@@ -71,6 +72,34 @@ public class PlayerController : MonoBehaviour
                 this.gameObject.GetComponent<Rigidbody2D>().AddForce(Vector2.right * enemy.strength);
                 
 
+            }
+        }
+        TofuStunnerEnemyController stunner = collision.gameObject.GetComponent<TofuStunnerEnemyController>();
+        if (stunner != null)
+        {
+            if(IsInputEnabled)
+            {
+                //IsInputEnabled = false;
+                if (Input.GetKeyDown(KeyCode.Space))
+                { 
+                    IsInputEnabled = false;
+                }
+                if (Input.GetKeyDown(KeyCode.RightArrow))
+                {
+                    IsInputEnabled = false;
+                }
+                if (Input.GetKeyDown(KeyCode.LeftArrow))
+                {
+                    IsInputEnabled = false;
+                }
+                if (Input.GetKeyDown("a"))
+                {
+                    IsInputEnabled = false;
+                }
+                if (Input.GetKeyDown("d"))
+                {
+                    IsInputEnabled = false;
+                }
             }
         }
     }
