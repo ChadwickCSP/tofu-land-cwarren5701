@@ -77,7 +77,7 @@ public class TofuStunnerEnemyController : MonoBehaviour
         // if ground script is attached to this object, then...
         if (ground != null)
         {
-            //move object adding the force that multiplied by the public variable "ground strength"
+            //move object with the force that's multiplied by the public variable "ground strength"
             this.gameObject.GetComponent<Rigidbody2D>().AddForce(Vector2.up * ground.strength);
         }
 

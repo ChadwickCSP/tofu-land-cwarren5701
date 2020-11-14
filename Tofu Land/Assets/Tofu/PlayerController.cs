@@ -8,57 +8,73 @@ public class PlayerController : MonoBehaviour
     public float speed;
     // Determines how high the Tofu jumps
     public float jumpPower;
+    //global variable that enables all inputs 
     public static bool IsInputEnabled = true;
 
     // Update is called once per frame
     void Update()
     {
+        //if all inputs are enabled 
         if (IsInputEnabled)
         {
+            //when there's a horizontalInput move object on the horizontal axis
             float horizontalInput = Input.GetAxis("Horizontal");
-
+            //move the object right or left depending on its speed 
             transform.Translate(Vector2.right * speed * Time.deltaTime * horizontalInput);
 
             //Assigning the space bar to the jumping movement 
             bool isJumping = Input.GetKeyDown(KeyCode.Space);
 
-            // Add code to make it so that when you press space the Tofu jumps
+            //when ibject isjumping then...
             if (isJumping)
             {
+                //move object with the force that's multiplied by the public variable "jumpPower" up
                 GetComponent<Rigidbody2D>().AddForce(Vector2.up * jumpPower);
             }
 
-            // if the player presses the right or left arrow keys(or a or d) and the object moves forward or backwards, it will also flip so it is facing the correct direction
+            // if the player presses the right or left arrow keys(or a or d) and the object moves right or left, it will also flip so it is facing the correct direction
             if (horizontalInput < 0)
             {
+                //flip the object on its x axis
                 GetComponent<SpriteRenderer>().flipX = true;
             }
+            //if the player presses the other of the keys for horizontal input then..
             else
             {
+                //flip the object on its x axis
                 GetComponent<SpriteRenderer>().flipX = false;
             }
             // if the player presses the right or left arrow keys(or a or d) the object will move accordingly
             if (horizontalInput != 0)
             {
+                //set the variable "isMoving" to true in the Animator 
                 GetComponent<Animator>().SetBool("isMoving", true);
             }
+
+            // if the player doesn't press the right or left arrow keys(or a or d) the object will move accordingly
             else
             {
+                //set the variable "isMoving" to true in the Animator 
                 GetComponent<Animator>().SetBool("isMoving", false);
             }
         }
     }
-
+    // method will run when a collision occurs 
     private void OnCollisionEnter2D(Collision2D collision)
     {
+        // print message when collison happens 
         print(collision.gameObject);
 
+        //assigning "enemy" to the EnemyController script so that during a collison, we can check if that script is on a object
         EnemyController enemy = collision.gameObject.GetComponent<EnemyController>();
+        // if EnemyController script is attached to this object, then...
         if (enemy != null)
-
         {
+            //determining that when we refer to tofuX it means that objects position on the x axis 
             float tofuX = this.transform.position.x;
+            //determining that when we refer to enemyX it means that objects position on the x axis 
             float enemyX = enemy.transform.position.x;
+            //determining the when "isLeftofTofu" is true it really means that the tofuX is less than than enemyX
             bool isLeftofEnemy = tofuX < enemyX;
 
             // if the enemy is left of the enemy then...
@@ -79,11 +95,15 @@ public class PlayerController : MonoBehaviour
 
             }
         }
+        //assigning "stunner" to the PlayerController script so that during a collison, we can check if that script is on a object
         TofuStunnerEnemyController stunner = collision.gameObject.GetComponent<TofuStunnerEnemyController>();
+        // if stunner is attached to this object, then...
         if (stunner != null)
         {
+            //if all inputs are enabled, when this collision occurs..
             if(IsInputEnabled)
             {
+                //disable all inputs
                 IsInputEnabled = false;
             }
         }

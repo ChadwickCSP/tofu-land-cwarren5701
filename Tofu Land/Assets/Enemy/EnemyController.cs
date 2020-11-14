@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class EnemyController : MonoBehaviour
 {
+    //if this value is true, the object is moving left 
     public bool movingLeft;
 
     //The amount of force to apply to Tofu on contact
@@ -12,24 +13,29 @@ public class EnemyController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        //value that can have decimals, and refers to the speed of the object
         float speed = 0;
-
+        //if object is moving left...
         if (movingLeft)
         {
+            //speed is -1 so the object is moving left
             speed = -1;
         }
+        //if object is not moving left...
         else
         {
+            //speed is 1 so the object moves right 
             speed = 1;
+            //when the object starts moving right, flip the object on its x object so its facing the direction its walking
             GetComponent<SpriteRenderer>().flipX = true;
         }
-
+        //move the object right or left depending on its speed 
         transform.Translate(Vector2.right * speed * Time.deltaTime);
 
 
         
     }
-
+    // method will run when a collision occurs 
     private void OnTriggerEnter2D(Collider2D collision)
     {
         // print message when collison happens 
@@ -44,9 +50,11 @@ public class EnemyController : MonoBehaviour
             // the "!" means the opposite of the following value
 
             this.movingLeft = !checker.isLeftBound;
+            //when it collides with the edgechecker, then flip it on its x axis 
             GetComponent<SpriteRenderer>().flipX = false;
 
         }
+        //assigning "playerController" to the PlayerController script so that during a collison, we can check if that script is on a object
         PlayerController playerController = collision.gameObject.GetComponent<PlayerController>();
 
         // if playercontroller is attached to this object, then...
@@ -60,13 +68,17 @@ public class EnemyController : MonoBehaviour
             playerController.gameObject.GetComponent<Rigidbody2D>().AddForce(Vector2.up * 600);
         }
     }
-
+    // method will run when a collision occurs 
     private void OnCollisionEnter2D(Collision2D collision)
     {
+        // print message when collison happens 
         print(collision.gameObject);
+        //assigning "ground" to the BouncyGround script so that during a collison, we can check if that script is on a object
         BouncyGround ground = collision.gameObject.GetComponent<BouncyGround>();
+        // if ground script is attached to this object, then...
         if (ground != null)
         {
+            //move object with the force that's multiplied by the public variable "ground strength"
             this.gameObject.GetComponent<Rigidbody2D>().AddForce(Vector2.up * ground.strength);
         }
         
