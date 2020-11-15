@@ -10,7 +10,12 @@ public class PlayerController : MonoBehaviour
     public float jumpPower;
     //global variable that enables all inputs 
     public static bool IsInputEnabled = true;
-
+    public float health;
+    //update is called at the begining of the game 
+    void Start()
+    {
+        health = 5; 
+    }
     // Update is called once per frame
     void Update()
     {
@@ -58,6 +63,11 @@ public class PlayerController : MonoBehaviour
                 GetComponent<Animator>().SetBool("isMoving", false);
             }
         }
+        if(health < 1)
+        {
+            transform.position = new Vector3(-11, 1, 0);
+            health = 5;
+        }
     }
     // method will run when a collision occurs 
     private void OnCollisionEnter2D(Collision2D collision)
@@ -72,7 +82,7 @@ public class PlayerController : MonoBehaviour
         // if EnemyController script is attached to this object, then...
         if (enemy != null)
         {
-            transform.position = new Vector3(-11, 1, 0);
+            health += -1;
             //determining that when we refer to tofuX it means that objects position on the x axis 
             //float tofuX = this.transform.position.x;
             //determining that when we refer to enemyX it means that objects position on the x axis 
@@ -100,11 +110,11 @@ public class PlayerController : MonoBehaviour
         }
         if(tofuFollower != null)
         {
-            transform.position = new Vector3(-11, 1, 0);
+            health += -1;
         }
-        if(tofuStunner != null)
+        if (tofuStunner != null)
         {
-            transform.position = new Vector3(-11, 1, 0);
+            health += -1;
 
         }
         //assigning "stunner" to the PlayerController script so that during a collison, we can check if that script is on a object
@@ -123,7 +133,7 @@ public class PlayerController : MonoBehaviour
         SpikeController spike = collision.gameObject.GetComponent<SpikeController>();
         if (spike != null)
         {
-            transform.position = new Vector3(-11, 1, 0);
+            health += -1;
         }
     }
     
