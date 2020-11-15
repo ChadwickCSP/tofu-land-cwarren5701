@@ -67,33 +67,45 @@ public class PlayerController : MonoBehaviour
 
         //assigning "enemy" to the EnemyController script so that during a collison, we can check if that script is on a object
         EnemyController enemy = collision.gameObject.GetComponent<EnemyController>();
+        TofuFollowerEnemyController tofuFollower = collision.gameObject.GetComponent<TofuFollowerEnemyController>();
+        TofuStunnerEnemyController tofuStunner = collision.gameObject.GetComponent<TofuStunnerEnemyController>();
         // if EnemyController script is attached to this object, then...
         if (enemy != null)
         {
+            transform.position = new Vector3(-11, 1, 0);
             //determining that when we refer to tofuX it means that objects position on the x axis 
-            float tofuX = this.transform.position.x;
+            //float tofuX = this.transform.position.x;
             //determining that when we refer to enemyX it means that objects position on the x axis 
-            float enemyX = enemy.transform.position.x;
+            //float enemyX = enemy.transform.position.x;
             //determining the when "isLeftofTofu" is true it really means that the tofuX is less than than enemyX
-            bool isLeftofEnemy = tofuX < enemyX;
+            //bool isLeftofEnemy = tofuX < enemyX;
 
             // if the enemy is left of the enemy then...
-            if (isLeftofEnemy)
-            {
-                // have the tofu kickback on contact to the left based on the enemy strength 
-                this.gameObject.GetComponent<Rigidbody2D>().AddForce(Vector2.left * enemy.strength);
-             
+            //if (isLeftofEnemy)
+            //{
+            // have the tofu kickback on contact to the left based on the enemy strength 
+            //this.gameObject.GetComponent<Rigidbody2D>().AddForce(Vector2.left * enemy.strength);
 
 
-            }
+
+            //}
             // if the enemy is not facing left(so facing right)
-            else
-            {
-                //have the tofu kickback on contact to the right based on the enemy strength
-                this.gameObject.GetComponent<Rigidbody2D>().AddForce(Vector2.right * enemy.strength);
-                
+            //else
+            //{
+            //have the tofu kickback on contact to the right based on the enemy strength
+            //this.gameObject.GetComponent<Rigidbody2D>().AddForce(Vector2.right * enemy.strength);
 
-            }
+
+            // }
+        }
+        if(tofuFollower != null)
+        {
+            transform.position = new Vector3(-11, 1, 0);
+        }
+        if(tofuStunner != null)
+        {
+            transform.position = new Vector3(-11, 1, 0);
+
         }
         //assigning "stunner" to the PlayerController script so that during a collison, we can check if that script is on a object
         TofuStunnerEnemyController stunner = collision.gameObject.GetComponent<TofuStunnerEnemyController>();
@@ -106,6 +118,12 @@ public class PlayerController : MonoBehaviour
                 //disable all inputs
                 IsInputEnabled = false;
             }
+        }
+
+        SpikeController spike = collision.gameObject.GetComponent<SpikeController>();
+        if (spike != null)
+        {
+            transform.position = new Vector3(-11, 1, 0);
         }
     }
     
