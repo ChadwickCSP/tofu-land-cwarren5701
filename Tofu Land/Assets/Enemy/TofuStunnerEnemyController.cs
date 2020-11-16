@@ -47,7 +47,6 @@ public class TofuStunnerEnemyController : MonoBehaviour
         {
             // so if it is a checker on this object, then make it so the enemy is not travelling left(if its not going left its going right) so basically making the enemy turn around and walk the other way
             // the "!" means the opposite of the following value
-
             this.movingLeft = !checker.isLeftBound;
             //when it collides with the edgechecker, then flip it on its x axis 
             GetComponent<SpriteRenderer>().flipX = false;

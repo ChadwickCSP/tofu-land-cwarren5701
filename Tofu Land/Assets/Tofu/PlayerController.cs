@@ -10,10 +10,12 @@ public class PlayerController : MonoBehaviour
     public float jumpPower;
     //global variable that enables all inputs 
     public static bool IsInputEnabled = true;
+    //determines the tofu's health hitpoints
     public float health;
     //update is called at the begining of the game 
     void Start()
     {
+        //health value starts at 5 
         health = 5; 
     }
     // Update is called once per frame
@@ -63,10 +65,15 @@ public class PlayerController : MonoBehaviour
                 GetComponent<Animator>().SetBool("isMoving", false);
             }
         }
+        //if health is less than 1 then...
         if(health < 1)
         {
+            //move tofu back to starting position
             transform.position = new Vector3(-11, 1, 0);
+            //set health to 5 
             health = 5;
+            //set speed to 3 
+            speed = 3;
         }
     }
     // method will run when a collision occurs 
@@ -77,11 +84,14 @@ public class PlayerController : MonoBehaviour
 
         //assigning "enemy" to the EnemyController script so that during a collison, we can check if that script is on a object
         EnemyController enemy = collision.gameObject.GetComponent<EnemyController>();
+        //assigning "tofuFollower" to the TofuFollowerEnemyController script so that during a collison, we can check if that script is on a object
         TofuFollowerEnemyController tofuFollower = collision.gameObject.GetComponent<TofuFollowerEnemyController>();
+        //assigning "tofuStunner" to the TofuStunnerEnemyController script so that during a collison, we can check if that script is on a object
         TofuStunnerEnemyController tofuStunner = collision.gameObject.GetComponent<TofuStunnerEnemyController>();
         // if EnemyController script is attached to this object, then...
         if (enemy != null)
         {
+            //subtract 1 from the health value
             health += -1;
             //determining that when we refer to tofuX it means that objects position on the x axis 
             //float tofuX = this.transform.position.x;
@@ -108,12 +118,16 @@ public class PlayerController : MonoBehaviour
 
             // }
         }
-        if(tofuFollower != null)
+        // if TofuFollowerEnemyController script is attached to this object, then...
+        if (tofuFollower != null)
         {
+            //subtract 1 from the health value
             health += -1;
         }
+        // if TofuStunnerEnemyController script is attached to this object, then...
         if (tofuStunner != null)
         {
+            //subtract 1 from the health value
             health += -1;
 
         }
@@ -129,12 +143,24 @@ public class PlayerController : MonoBehaviour
                 IsInputEnabled = false;
             }
         }
-
+        //assigning "spike" to the SpikeController script so that during a collison, we can check if that script is on a object
         SpikeController spike = collision.gameObject.GetComponent<SpikeController>();
+        // if SpikeController script is attached to this object, then...
         if (spike != null)
         {
+            //subtract 1 from the health value
             health += -1;
         }
+        //assigning "orbs" to the SpeedOrbs script so that during a collison, we can check if that script is on a object
+        SpeedOrbs orbs = collision.gameObject.GetComponent<SpeedOrbs>();
+        if(orbs != null)
+        {
+            //add 1 to the speed value 
+            speed += 1;
+            //destroy object that SpeedOrbs scripts is a component on
+            UnityEngine.Object.Destroy(orbs.gameObject);
+        }
+            
     }
     
 
